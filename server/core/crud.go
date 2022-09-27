@@ -16,7 +16,7 @@ func CreateNewItem(item ItemCreate) Item {
 		Image:       item.Image,
 		Lat:         item.Lat,
 		Lon:         item.Lon,
-		DateFrom:    time.Now(),
+		DateFrom:    PythonISOTime(time.Now()),
 		DateTo:      nil,
 	}
 	fakeItemDB[currentID] = createdItem
