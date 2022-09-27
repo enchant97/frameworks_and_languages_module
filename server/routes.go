@@ -5,11 +5,13 @@ import (
 	"strconv"
 
 	"github.com/enchant97/frameworks_and_languages_module/server/core"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 // Setup & register the Routes
 func InitRoutes(engine *gin.Engine) {
+	engine.Use(cors.Default())
 	rootRoutes := engine.Group("/")
 	{
 		rootRoutes.GET("/", GetIndex)
