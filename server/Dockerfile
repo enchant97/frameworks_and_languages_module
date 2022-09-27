@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1.4
-
 FROM golang:alpine as builder
 
     WORKDIR /usr/src/app
@@ -13,7 +11,7 @@ FROM golang:alpine as builder
 
 FROM alpine:latest
 
-    COPY --from=builder --link /usr/local/bin/app /usr/local/bin/app
+    COPY --from=builder /usr/local/bin/app /usr/local/bin/app
 
     ENV SERVER_BIND="0.0.0.0:8000"
     ENV GIN_MODE=release
