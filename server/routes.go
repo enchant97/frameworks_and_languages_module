@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/enchant97/frameworks_and_languages_module/server/core"
 	cors "github.com/enchant97/go-gin-cors"
@@ -80,22 +79,20 @@ func GetItems(c *gin.Context) {
 	var dateTo *core.PythonISOTime
 
 	if filters.DateFrom != nil {
-		date, err := time.Parse("2006-01-02T15:04:05", *filters.DateFrom)
-		date2 := core.PythonISOTime(date)
+		date, err := core.ParsePythonISOTime(*filters.DateFrom)
 		if err != nil {
 			c.AbortWithError(http.StatusMethodNotAllowed, err)
 			return
 		}
-		dateFrom = &date2
+		dateFrom = &date
 	}
 	if filters.DateTo != nil {
-		date, err := time.Parse("2006-01-02T15:04:05", *filters.DateTo)
-		date2 := core.PythonISOTime(date)
+		date, err := core.ParsePythonISOTime(*filters.DateTo)
 		if err != nil {
 			c.AbortWithStatus(http.StatusMethodNotAllowed)
 			return
 		}
-		dateTo = &date2
+		dateTo = &date
 	}
 
 	items := core.GetItemsFiltered(core.ItemsFilter{

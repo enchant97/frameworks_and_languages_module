@@ -1,17 +1,5 @@
 package core
 
-import (
-	"fmt"
-	"time"
-)
-
-type PythonISOTime time.Time
-
-func (t PythonISOTime) MarshalJSON() ([]byte, error) {
-	formattedTime := time.Time(t).Format("2006-01-02T15:04:05")
-	return []byte(fmt.Sprintf("\"%s\"", formattedTime)), nil
-}
-
 // The struct used when a user wants to add a new item
 type ItemCreate struct {
 	UserID      string   `json:"user_id" binding:"required"`
