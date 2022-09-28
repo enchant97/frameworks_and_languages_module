@@ -2,8 +2,11 @@ package core
 
 import (
 	"sort"
+	"strings"
 	"time"
 )
+
+const defaultRadius = 5
 
 // Create a new item in fake database
 func CreateNewItem(item ItemCreate) Item {
@@ -50,6 +53,53 @@ func GetItems() []Item {
 		items[i] = fakeItemDB[int64(k)]
 	}
 	return items
+}
+
+// Get all items from database,
+// filtering using given filters and sorted by id ascending
+func GetItemsFiltered(filters ItemsFilter) []Item {
+	items := GetItems()
+
+	if filters == (ItemsFilter{}) {
+		// no filter was provided, early return with all items
+		return items
+	}
+
+	filteredItems := make([]Item, 0)
+
+	if filters.Radius == nil {
+		rad := float64(defaultRadius)
+		filters.Radius = &rad
+	}
+	if filters.DateTo == nil {
+		now := PythonISOTime(time.Now())
+		filters.DateTo = &now
+	}
+
+	for _, item := range items {
+		if filters.UserID != nil && item.UserID != *filters.UserID {
+			// check if user does not match
+			continue
+		}
+		if filters.CSVKeywords != nil && !containsAll(item.Keywords, strings.Split(*filters.CSVKeywords, ",")) {
+			// check if keywords are missing
+			continue
+		}
+		if filters.Lat != nil && filters.Lon != nil && !item.InRange(*filters.Radius, *filters.Lat, *filters.Lon) {
+			// check if not in range
+			continue
+		}
+		if filters.DateFrom != nil && time.Time(item.DateFrom).Before(time.Time(*filters.DateFrom)) {
+			// check if date is less than item's date_from date
+			continue
+		}
+		if item.DateTo != nil && time.Time(*item.DateTo).After(time.Time(*filters.DateTo)) {
+			// check if date is after item's date_to date
+			continue
+		}
+		filteredItems = append(filteredItems, item)
+	}
+	return filteredItems
 }
 
 // Delete a item by it's id from the fake database

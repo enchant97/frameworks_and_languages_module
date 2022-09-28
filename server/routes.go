@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/enchant97/frameworks_and_languages_module/server/core"
 	cors "github.com/enchant97/go-gin-cors"
@@ -70,6 +71,41 @@ func DeleteItemByID(c *gin.Context) {
 
 // Route to get all items (with query filters)
 func GetItems(c *gin.Context) {
-	items := core.GetItems()
+	var filters core.ItemsFilterFromRequest
+	if err := c.ShouldBindQuery(&filters); err != nil {
+		c.AbortWithError(http.StatusMethodNotAllowed, err)
+		return
+	}
+	var dateFrom *core.PythonISOTime
+	var dateTo *core.PythonISOTime
+
+	if filters.DateFrom != nil {
+		date, err := time.Parse("2006-01-02T15:04:05", *filters.DateFrom)
+		date2 := core.PythonISOTime(date)
+		if err != nil {
+			c.AbortWithError(http.StatusMethodNotAllowed, err)
+			return
+		}
+		dateFrom = &date2
+	}
+	if filters.DateTo != nil {
+		date, err := time.Parse("2006-01-02T15:04:05", *filters.DateTo)
+		date2 := core.PythonISOTime(date)
+		if err != nil {
+			c.AbortWithStatus(http.StatusMethodNotAllowed)
+			return
+		}
+		dateTo = &date2
+	}
+
+	items := core.GetItemsFiltered(core.ItemsFilter{
+		UserID:      filters.UserID,
+		CSVKeywords: filters.CSVKeywords,
+		Lat:         filters.Lat,
+		Lon:         filters.Lon,
+		Radius:      filters.Radius,
+		DateFrom:    dateFrom,
+		DateTo:      dateTo,
+	})
 	c.JSONP(http.StatusOK, items)
 }
