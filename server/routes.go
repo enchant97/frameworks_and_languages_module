@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/enchant97/frameworks_and_languages_module/server/core"
-	"github.com/gin-contrib/cors"
+	cors "github.com/enchant97/go-gin-cors"
 	"github.com/gin-gonic/gin"
 )
 

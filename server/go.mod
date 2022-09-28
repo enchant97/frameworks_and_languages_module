@@ -3,7 +3,7 @@ module github.com/enchant97/frameworks_and_languages_module/server
 go 1.19
 
 require (
-	github.com/gin-contrib/cors v1.4.0
+	github.com/enchant97/go-gin-cors v0.0.0-20220928132316-0b61ea22bb38
 	github.com/gin-gonic/gin v1.8.1
 )
 
