@@ -1,32 +1,26 @@
 import { Component, For } from 'solid-js';
+import { Item } from '../core/types';
 
 export type ItemProps = {
-  id: string
-  userId: string
-  keywords: string[]
-  Description: string
-  ImageUrl?: string
-  Lat?: number
-  Lon?: number
-  DateFrom: Date
-  onDeleteClick: (itemId: string) => void
+  item: Item
+  onDeleteClick?: (itemId: string) => void
 }
 
-const Item: Component<ItemProps> = (props) => {
+const SingleItem: Component<ItemProps> = (props) => {
   return (
     <>
-      <span data-field="id">{props.id}</span>
-      <img src={props.ImageUrl} data-field="image" />
-      <span data-field="user_id">{props.userId}</span>
+      <span data-field="id">{props.item.id}</span>
+      <img src={props.item.image} data-field="image" />
+      <span data-field="user_id">{props.item.user_id}</span>
       <div>
         LatLon:
-        <span data-field="lat">{props.Lat}</span>
-        <span data-field="lon">{props.Lon}</span>
+        <span data-field="lat">{props.item.lat}</span>
+        <span data-field="lon">{props.item.lon}</span>
       </div>
-      <time dateTime={props.DateFrom.toDateString()}>{props.DateFrom.toLocaleString()}</time>
-      <p data-field="description">{props.Description}</p>
+      <time dateTime={props.item.date_from.toDateString()}>{props.item.date_from.toLocaleString()}</time>
+      <p data-field="description">{props.item.description}</p>
       <ul data-field="keywords">
-        <For each={props.keywords}>
+        <For each={props.item.keywords}>
           {item => <li>{item}</li>}
         </For>
       </ul>
@@ -35,4 +29,4 @@ const Item: Component<ItemProps> = (props) => {
   );
 };
 
-export default Item;
+export default SingleItem;
