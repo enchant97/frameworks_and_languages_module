@@ -1,5 +1,4 @@
 import { Component, For } from 'solid-js';
-import { Button, Image } from 'solid-bootstrap';
 
 export type ItemProps = {
   id: string
@@ -17,7 +16,7 @@ const Item: Component<ItemProps> = (props) => {
   return (
     <>
       <span data-field="id">{props.id}</span>
-      <Image src={props.ImageUrl} data-field="image" />
+      <img src={props.ImageUrl} data-field="image" />
       <span data-field="user_id">{props.userId}</span>
       <div>
         LatLon:
@@ -31,7 +30,7 @@ const Item: Component<ItemProps> = (props) => {
           {item => <li>{item}</li>}
         </For>
       </ul>
-      <Button data-action="delete">Delete</Button>
+      <button data-action="delete">Delete</button>
     </>
   );
 };

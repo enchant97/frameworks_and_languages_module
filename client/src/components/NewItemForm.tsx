@@ -1,41 +1,24 @@
 import { Component } from 'solid-js';
-import { Form, Button } from 'solid-bootstrap';
 
 const NewItemForm: Component = () => {
     return (
-      <Form>
-        <Form.Group class="mb-3">
-          <Form.Label>User ID</Form.Label>
-          <Form.Control type='text' name='user_id' required />
-        </Form.Group>
-
-        <Form.Group class="mb-3">
-          <Form.Label>Lat</Form.Label>
-          <Form.Control type='number' name='lat' />
-        </Form.Group>
-
-        <Form.Group class="mb-3">
-          <Form.Label>Lon</Form.Label>
-          <Form.Control type='number' name='lon' />
-        </Form.Group>
-
-        <Form.Group class="mb-3">
-          <Form.Label>Description</Form.Label>
-          <Form.Control as='textarea' name='description' rows={3} required />
-        </Form.Group>
-
-        <Form.Group class="mb-3">
-          <Form.Label>Image</Form.Label>
-          <Form.Control type='url' name='image' />
-        </Form.Group>
-
-        <Form.Group class="mb-3">
-          <Form.Label>Keywords</Form.Label>
-          <Form.Control type='text' name='keywords' />
-        </Form.Group>
-
-        <Button variant='primary' type='submit' data-action='create_item'>Submit</Button>
-      </Form>
+      <form class='max-w-lg mx-auto flex flex-col'>
+        <div class='grid grid-cols-2 mb-2'>
+          <label>User ID</label>
+          <input class='border-2 rounded' type='text' name='user_id' required />
+          <label>Lat</label>
+          <input class='border-2 rounded' type='number' name='lat' />
+          <label>Lon</label>
+          <input class='border-2 rounded' type='number' name='lon' />
+          <label>Description</label>
+          <textarea class='border-2 rounded' name="description" rows="3" required></textarea>
+          <label>Image</label>
+          <input class='border-2 rounded' type='url' name='image' />
+          <label>Keywords</label>
+          <input class='border-2 rounded' type='text' name='keywords' />
+        </div>
+        <button class='text-white bg-sky-500 hover:bg-sky-800 rounded p-2' type='submit' data-action='create_item'>Submit</button>
+      </form>
     );
   };
 
