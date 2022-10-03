@@ -18,3 +18,4 @@ FROM alpine:latest
     EXPOSE 8000
 
     CMD ["app"]
+
