@@ -1,7 +1,7 @@
 import { Component, createEffect, createResource, createSignal, For } from 'solid-js';
 import SingleItem from './components/Item';
 import NewItemForm from './components/NewItemForm';
-import { createItem, getItems } from './core/api';
+import { createItem, deleteItem, getItems } from './core/api';
 import { Item, ItemCreate } from './core/types';
 
 const App: Component = () => {
@@ -23,14 +23,19 @@ const App: Component = () => {
 
   const onNewItemSubmit = (newItem: ItemCreate) => {
     if (apiURL)
-      createItem(apiURL, newItem).then((_) => {
+      createItem(apiURL, newItem).then(_ => {
         // TODO instead of refetching everything,
         // updating the existing page should be preferred
         refetchItems()
       })
   }
   const onItemDelete = (itemId: string) => {
-    // TODO implement
+    if (apiURL)
+      deleteItem(apiURL, itemId).then(_ => {
+        // TODO instead of refetching everything,
+        // updating the existing page should be preferred
+        refetchItems()
+      })
   }
 
   return (

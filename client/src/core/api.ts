@@ -41,3 +41,15 @@ export async function getItems(baseUrl: string): Promise<Item[]> {
 
   return data
 }
+
+export async function deleteItem(baseUrl: string, itemId: string) {
+  let response = await fetch(
+    baseUrl + '/item/' + itemId + "/",
+    {
+      method: "DELETE",
+    },
+  )
+  if (!response.ok) {
+    throw new Error(`request error ${response.status}`)
+  }
+}

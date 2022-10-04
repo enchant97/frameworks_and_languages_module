@@ -7,6 +7,9 @@ export type ItemProps = {
 }
 
 const SingleItem: Component<ItemProps> = (props) => {
+  const onDelete = () => {
+    props.onDeleteClick?.(props.item.id)
+  }
   return (
     <>
       <span data-field="id">{props.item.id}</span>
@@ -24,7 +27,7 @@ const SingleItem: Component<ItemProps> = (props) => {
           {item => <li>{item}</li>}
         </For>
       </ul>
-      <button data-action="delete">Delete</button>
+      <button data-action="delete" onclick={onDelete}>Delete</button>
     </>
   );
 };
