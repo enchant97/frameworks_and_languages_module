@@ -27,7 +27,7 @@ const SingleItem: Component<ItemProps> = (props) => {
           {item => <li>{item}</li>}
         </For>
       </ul>
-      <button data-action="delete" onclick={onDelete}>Delete</button>
+      <button class='text-white bg-red-500 hover:bg-red-800 rounded p-2' data-action="delete" onclick={onDelete}>Delete</button>
     </>
   );
 };

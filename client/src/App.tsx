@@ -39,18 +39,18 @@ const App: Component = () => {
   }
 
   return (
-    <div class='md:container md:mx-auto'>
+    <div class='md:container md:mx-auto px-2'>
       <h1 class='text-center text-3xl'>FreeCycle</h1>
-      <p>{apiURL}</p>
+      <p class='text-center'>{apiURL}</p>
       <section class='mt-2'>
         <h2 class='text-center text-xl'>Create New</h2>
         <NewItemForm onSubmit={onNewItemSubmit} />
       </section>
       <section class='mt-2' data-page="items">
         <h2 class='text-center text-xl'>Items</h2>
-        <ul>
+        <ul class='grid grid-cols-3 gap-2'>
           <For each={items()}>
-            {item => <li><SingleItem item={item} onDeleteClick={onItemDelete} /></li>}
+            {item => <li class='border-2 rounded p-2'><SingleItem item={item} onDeleteClick={onItemDelete} /></li>}
           </For>
         </ul>
       </section>
