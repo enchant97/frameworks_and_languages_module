@@ -1,20 +1,33 @@
-import { Component, createResource, createSignal, For } from 'solid-js';
+import { Component, createEffect, createResource, createSignal, For } from 'solid-js';
 import SingleItem from './components/Item';
 import NewItemForm from './components/NewItemForm';
-import { getItems } from './core/api';
+import { createItem, getItems } from './core/api';
 import { Item, ItemCreate } from './core/types';
 
 const App: Component = () => {
   const apiURL = (new URLSearchParams(document.location.search)).get("api")
 
   const [items, setItems] = createSignal<Item[]>([])
-  const [resourceItems] = createResource(async () => {
+  const [resourceItems, { refetch: refetchItems }] = createResource(async () => {
     if (apiURL)
-      setItems(await getItems(apiURL))
+      return await getItems(apiURL)
+    return []
+  })
+
+  createEffect(() => {
+    // Loads existing items onto page
+    let newItems = resourceItems()
+    if (newItems)
+      setItems(newItems)
   })
 
   const onNewItemSubmit = (newItem: ItemCreate) => {
-    // TODO implement
+    if (apiURL)
+      createItem(apiURL, newItem).then((_) => {
+        // TODO instead of refetching everything,
+        // updating the existing page should be preferred
+        refetchItems()
+      })
   }
   const onItemDelete = (itemId: string) => {
     // TODO implement

@@ -30,12 +30,12 @@ const NewItemForm: Component<NewItemFormProps> = (props) => {
         <label>Lat</label>
         <input
           class='border-2 rounded' type='number' name='lat'
-          oninput={(e) => setFields('lat', e.target.value)}
+          oninput={(e) => setFields('lat', parseFloat(e.target.value))}
         />
         <label>Lon</label>
         <input
           class='border-2 rounded' type='number' name='lon'
-          oninput={(e) => setFields('lon', e.target.value)}
+          oninput={(e) => setFields('lon', parseFloat(e.target.value))}
         />
         <label>Description</label>
         <textarea

@@ -15,7 +15,11 @@ export async function createItem(baseUrl: string, newItem: ItemCreate): Promise<
   if (!response.ok) {
     throw new Error(`request error ${response.status}`)
   }
-  return await response.json()
+  let data: Item = await response.json()
+  data.date_from = new Date(data.date_from)
+  if (data.date_to)
+    data.date_to = new Date(data.date_to)
+  return data
 }
 
 export async function getItems(baseUrl: string): Promise<Item[]> {
@@ -25,5 +29,15 @@ export async function getItems(baseUrl: string): Promise<Item[]> {
   if (!response.ok) {
     throw new Error(`request error ${response.status}`)
   }
-  return response.json()
+
+  let data: Item[] = await response.json()
+
+  // this converts all the dates from strings into date
+  data.forEach((item) => {
+    item.date_from = new Date(item.date_from)
+    if (item.date_to)
+      item.date_to = new Date(item.date_to)
+  })
+
+  return data
 }
