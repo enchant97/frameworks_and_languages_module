@@ -1,5 +1,5 @@
 {
-  "name": "vite-template-solid",
+  "name": "client",
   "version": "0.0.0",
   "description": "",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.17",
