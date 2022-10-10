@@ -9,7 +9,7 @@ Server Framework Features
 
 ### Data Binding & Validation
 
-Data Binding in Gin is where raw data is serialised into a specific layout, for example when serializing a JSON string into a struct. It can also be used to ensure that the data is in a valid format. In the Gin-Gonic; framework struct field tags are used to add rules for the validation library (Validator) to apply.
+Data Binding in Gin is where raw data is serialised into a specific layout, for example when serializing a JSON string into a struct. It can also be used to ensure that the data matches the given schema. In the Gin-Gonic; framework struct field tags are used to add rules for the validation library (Validator) to apply.
 
 ```go
 type Person struct {
@@ -84,21 +84,47 @@ Having reduced "boilerplate" code allows for quicker implementation of new featu
 Server Language Features
 -----------------------
 
-### (name of Feature 1)
+### Error Handling
+In Go errors are returned as a error type rather than being "raised and caught". Having errors use a specific type ensures that any errors that are returned can be handled by the calling code directly.
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+```go
+func MyFunc() error {
+    // method code here ...
+}
 
+func main() {
+    if err := MyFunc(); err != nil {
+        // handle errors here
+    }
+}
+```
 
-### (name of Feature 2)
+Having an error as a type means that Go's type assertion can be used to check specific errors, this is useful as it allows different errors to handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less bugs and prevent fatal crashes.
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+- [Go Error Handling](https://go.dev/blog/error-handling-and-go)
 
+### Standard Library
+The standard library in Go has many different libraries that can add more functionally into a program compared to using the "built-ins". These are included with the Go compiler and require no further downloads.
+
+```go
+import "encoding/json"
+
+struct User {
+    Name string `json:"name"`
+}
+
+func main() {
+    inputString := "{ 'name': 'Leo' }"
+    var user User
+    err := json.Unmarshal([]byte(inputString), &user)
+}
+
+```
+
+Having a standard library that is feature rich is important as it allows for most development to not need extra packages to be included. This reduces the number of external dependencies and should reduce the amount of external bugs and improve security as they may not be tested and reviewed to the same extend the standard library is. In relation to this project many of the features are all ready in the std library, for example JSON serialization/deserialization.
+
+- [Go Std Lib](https://pkg.go.dev/std)
+- [JSON In Go](https://golangdocs.com/json-with-golang)
 
 Client Framework Features
 -------------------------
