@@ -14,6 +14,13 @@ Overview
 * 2 Hour Lecture + Writing Workshop Experiment (whiteboard.fi)
 * 2 Hour Tutorial with project - formatively assessing progress
 
+Company TechStack
+-----------------
+
+* [How to OVER Engineer a Website // What is a Tech Stack?](https://www.youtube.com/watch?v=Sxxw3qtb3_g) YouTube 11min FireShip
+    * Talks though all the tech for client, server, ci, containers and then suggests a cutdown concept
+    * [stackshare.io/stacks](https://stackshare.io/stacks) - Popular Tech Stacks: The open source tools and SaaS behind popular tech companies
+
 
 Serverless Architecture
 -----------------------
