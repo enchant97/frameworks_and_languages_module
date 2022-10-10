@@ -129,29 +129,55 @@ Having a standard library that is feature rich is important as it allows for mos
 Client Framework Features
 -------------------------
 
-### (name of Feature 1)
+### JSX
+JSX is a syntax for building dynamic components using a syntax similar to HTML. SolidJS has modifications to ensure it looks closer to the HTML standards. If TypeScript is being used it will also be type checked.
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+```jsx
+<h1>Welcome {username()}</h1>
+```
 
+This makes it more readable for developers when writing HTML for a component as it looks very similar to HTML. JSX also allows for Solid's reactivity to be added directly into the JSX for a component. Unlike HTML it does not allow unclosed tags, this will ensure that there are less unexpected results from bugs.
 
-### (name of Feature 2)
+- [SolidJS JSX](https://www.solidjs.com/tutorial/introduction_jsx)
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+### Components
+Components in SolidJS allows for code to be refactored, ensuring better separation and reuse without code duplication. As components can be detached from other code, they can even be imported from other locations meaning a library can be imported to use new components in a project.
 
+```js
+function User(props) {
+  return <li>{props.username}</li>
+}
 
-### (name of Feature 3)
+function Users() {
+  return (
+    <ul>
+      <User username="Leo" />
+      <User username="Steve" />
+    </ul>
+  )
+}
+```
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+Components are useful as it allows us to maintain DRY code, this reduces the amount of code written and the amount of potential bugs. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; which makes the workflow more efficient.
 
+- [SolidJS Component](https://www.solidjs.com/tutorial/introduction_components)
+
+### Signals
+To make an app reactive in SolidJS signals can be created. Signals can track modifications and update listening components when they change, this enables the app to update data and have it display updated on the users screen.
+
+```jsx
+import { createSignal } from "solid-js";
+
+function Counter() {
+  const [count, setCount] = createSignal(0);
+  setInterval(() => setCount(count() + 1), 1000);
+  return <div>Count: {count}</div>;
+}
+```
+
+Having signals allow the developer to not need to remember every element on screen that needs updates; each time something changes. The problem using signals is that they cannot be accessed like a normal variable, instead they must be called using a get/set method.
+
+- [SolidJS Signals](https://www.solidjs.com/tutorial/introduction_signals)
 
 Client Language Features
 ------------------------
