@@ -103,28 +103,21 @@ Having an error as a type means that Go's type assertion can be used to check sp
 
 - [Go Error Handling](https://go.dev/blog/error-handling-and-go)
 
-### Standard Library
-The standard library in Go has many different libraries that can add more functionally into a program compared to using the "built-ins". These are included with the Go compiler and require no further downloads.
+### Concurrency
+Golang is a concurrent language, meaning any functions created will always have the ability to be called asynchronously. To call a function asynchronously it can be wrapped in a goroutine, this allows code below to be run concurrently while the goroutine is running.
 
 ```go
-import "encoding/json"
-
-struct User {
-    Name string `json:"name"`
+func longRunningTask() {
+    // some long task ...
 }
 
 func main() {
-    inputString := "{ 'name': 'Leo' }"
-    var user User
-    err := json.Unmarshal([]byte(inputString), &user)
+    // run func in "background"
+    go longRunningTask()
 }
-
 ```
 
-Having a standard library that is feature rich is important as it allows for most development to not need extra packages to be included. This reduces the number of external dependencies and should reduce the amount of external bugs and improve security as they may not be tested and reviewed to the same extend the standard library is. In relation to this project many of the features are all ready in the std library, for example JSON serialization/deserialization.
-
-- [Go Std Lib](https://pkg.go.dev/std)
-- [JSON In Go](https://golangdocs.com/json-with-golang)
+Concurrency is an important factor for increasing performance. In an IO heavy environment, such as a web server clients requests can be paused and resumed while waiting for io tasks to finish, this reduces the amount of cpu blocking while waiting which reduces the amount of hardware needed for handling the same number of simultaneous clients.
 
 Client Framework Features
 -------------------------
