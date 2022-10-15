@@ -77,7 +77,7 @@ func main() {
 }
 ```
 
-Having reduced "boilerplate" code allows for quicker implementation of new features and less bugs, due to repeated tasks like adding a new "GET" route with one line of code. It also helps future developers when they are maintaining/adding to the existing code, as it will look more consistent.
+Having reduced "boilerplate" code allows for quicker implementation of new features and less bugs, due to repeated tasks being added with minimal code. For example adding a new "GET" route only requires one line of code. Having less code will also aid future developers when they are maintaining/adding to the existing code, as there will be less duplicated code.
 
 - [Gin-Gonic Quickstart](https://gin-gonic.com/docs/quickstart/)
 
@@ -99,12 +99,12 @@ func main() {
 }
 ```
 
-Having an error as a type means that Go's type assertion can be used to check specific errors, this is useful as it allows different errors to handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less bugs and prevent fatal crashes.
+Having an error as a type means that Go's type assertion can be used to check specific errors, this is useful as it allows different errors to be handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less bugs and prevent fatal crashes.
 
 - [Go Error Handling](https://go.dev/blog/error-handling-and-go)
 
 ### Concurrency
-Golang is a concurrent language, meaning any functions created will always have the ability to be called asynchronously. To call a function asynchronously it can be wrapped in a goroutine, this allows code below to be run concurrently while the goroutine is running.
+Go is a concurrent language, meaning any functions created will always have the ability to be called asynchronously. To call a function asynchronously it can be wrapped in a goroutine, for example in the code below `go longRunningTask()` will run concurrently with any code after the method call.
 
 ```go
 func longRunningTask() {
@@ -114,10 +114,11 @@ func longRunningTask() {
 func main() {
     // run func in "background"
     go longRunningTask()
+    // other code ...
 }
 ```
 
-Concurrency is an important factor for increasing performance. In an IO heavy environment, such as a web server clients requests can be paused and resumed while waiting for io tasks to finish, this reduces the amount of cpu blocking while waiting which reduces the amount of hardware needed for handling the same number of simultaneous clients.
+Concurrency is an important factor for increasing performance. In an IO heavy environment, such as a web server; client requests can be paused and resumed while waiting for IO tasks to finish. This reduces the amount of cpu blocking while waiting and can reduce the amount of hardware needed for handling the same number of simultaneous clients.
 
 Client Framework Features
 -------------------------
@@ -129,7 +130,7 @@ JSX is a syntax for building dynamic components using a syntax similar to HTML. 
 <h1>Welcome {username()}</h1>
 ```
 
-This makes it more readable for developers when writing HTML for a component as it looks very similar to HTML. JSX also allows for Solid's reactivity to be added directly into the JSX for a component. Unlike HTML it does not allow unclosed tags, this will ensure that there are less unexpected results from bugs.
+JSX makes it more readable for developers when writing dynamic HTML for a component as it looks very similar to HTML. JSX also allows for Solid's reactivity to be added directly into the JSX for a component. Unlike HTML it does not allow unclosed tags, this will ensure that there are less unexpected results from bugs.
 
 - [SolidJS JSX](https://www.solidjs.com/tutorial/introduction_jsx)
 
@@ -151,7 +152,7 @@ function Users() {
 }
 ```
 
-Components are useful as it allows us to maintain DRY code, this reduces the amount of code written and the amount of potential bugs. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; which makes the workflow more efficient.
+Components are useful as they allow us to maintain DRY code, this reduces the amount of code written and the amount of potential bugs. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; which makes the workflow more efficient.
 
 - [SolidJS Component](https://www.solidjs.com/tutorial/introduction_components)
 
@@ -168,7 +169,7 @@ function Counter() {
 }
 ```
 
-Having signals allow the developer to not need to remember every element on screen that needs updates; each time something changes. The problem using signals is that they cannot be accessed like a normal variable, instead they must be called using a get/set method.
+Having signals allows the developer to not need to remember every element on screen that needs updates; each time a component changes. A difference with using signals compared to other frameworks is that they cannot be used like a normal variable, instead they are accessed using a get/set method.
 
 - [SolidJS Signals](https://www.solidjs.com/tutorial/introduction_signals)
 
