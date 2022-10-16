@@ -1,5 +1,6 @@
 Server
 ======
+This directory contains the prototype server code for "Freecycle-Inc" service.
 
 ## Prod
 This app is designed to be deployed with Docker. The following command will build the app, configured ready for production:
@@ -38,3 +39,10 @@ If you want to run the app in release mode for testing you can set this environm
 ```sh
 export GIN_MODE=release
 ```
+
+## References
+- <https://go.dev/doc/>
+- <https://pkg.go.dev/std>
+- <https://gin-gonic.com/docs/>
+- <https://pkg.go.dev/github.com/go-playground/validator/v10>
+- <https://pkg.go.dev/github.com/gin-contrib/cors>

@@ -1,5 +1,6 @@
 Client
 ======
+This directory contains the prototype client code for "Freecycle-Inc" service.
 
 ## Prod
 This app is designed to be deployed with Docker. The following command will build the app, configured ready for production:
@@ -44,3 +45,9 @@ If the port needs to be changed you can also use:
 ```sh
 npm run dev -- --port 3000
 ```
+
+## References
+- <https://www.solidjs.com/guides/getting-started>
+- <https://tailwindcss.com/docs/installation>
+- <https://nginx.org/en/docs/beginners_guide.html>
+- <https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html>
