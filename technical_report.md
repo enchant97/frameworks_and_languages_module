@@ -176,20 +176,46 @@ Having signals allows the developer to not need to remember every element on scr
 Client Language Features
 ------------------------
 
-### (name of Feature 1)
+### Strongly Typed
+TypeScript adds type checking into JavaScript to help catch errors before running any code. For the example shown below a "User" type is created, which can be added to the argument for the `log_user()` method. TypeScript will then ensure that any value passed to this method has that type, it will also ensure that usage of this value is supported by that type.
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+```ts
+type User = {
+  name: string
+}
 
-### (name of Feature 2)
+function log_user(user: User) {
+  // Compiler knows this exists, so no warning
+  console.log(user.name)
+  // This will give a warning, as 'age' does not exist in the 'User' type
+  console.log(user.age)
+}
+```
 
-(Technical description of the feature - 40ish words - 1 mark)
-(A code block snippet example demonstrating the feature - 1 mark)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words - 1 mark)
-(Provide reference urls to your sources of information about the feature - required)
+This is useful for developers (and the project) as it catches possible usage errors without running any of the code. It can also enable auto complete and suggestions for a developers editor, allowing them to implement features with less bugs that would otherwise slow down features being completed.
 
+- [TypeScript Static Type Checking](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
+
+### Modules
+TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. In TypeScript modules are also locally scoped unless functionality is specificity "exported", allowing external usage.
+
+```ts
+// file: a.ts
+export function hello() {
+  console.log("hello world");
+}
+
+// file: main.ts
+import { hello } from "./a";
+
+function main() {
+  hello()
+}
+```
+
+Using modules is an important feature for a larger project with lots of code, as it allows for code to be separated into an organised structure. This aids developers in understanding where specific features are being used, allowing for better readability. Modules also allows for features to be used in multiple places, which can reduce bugs when a feature needs to be updated, allowing for only one place to be changed, instead of changing many repeated implementations.
+
+- [TypeScript Modules](https://www.typescriptlang.org/docs/handbook/modules.html)
 
 Critique of Server/Client prototype
 ---------------------
