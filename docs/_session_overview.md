@@ -7,23 +7,22 @@
     * Server Frameworks 1
     * ExpressJS Worked Example
 * Session 3 - Monday 10th October
-    * Server Frameworks 2
-* Session 4 - Monday 17th October
     * Client Frameworks 1
     * VueJS Worked Example
-* Session 5 - Monday 31st October
-    * Client Frameworks 2
-* ACW
-* Session 6 - Monday 7th November
-    * Client Layout Frameworks
-* Session 7 - Monday 14th November
+* Session 4 - Monday 17th October
     * Test Frameworks
-* Session 8 - Monday 21st November
+* ACW
+* Session 5 - Monday 31st October
+    * Client Layout Frameworks
+* Session 6 - Monday 7th November
     * Language Features
-* Session 9 - Monday 28th November
-    * Assignment Workshop
-* Session 10 - Monday 5th December
+* Session 7 - Monday 14th November
+    * Framework example - code review
+    * Without a Framework - code review
+* Session 8 - Monday 21st November
     * Frameworks in other domains
-* Session 11 - Monday 12th December
+* Session 9 - Monday 28th November
     * Engineering stories
-
+* Session 10 - Monday 5th December
+    * Assignment Workshop
+* Session 11 - Monday 12th December
