@@ -197,7 +197,7 @@ This is useful for developers (and the project) as it catches possible usage err
 - [TypeScript Static Type Checking](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 
 ### Modules
-TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. In TypeScript modules are also locally scoped unless functionality is specificity "exported", allowing external usage.
+TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. In TypeScript modules are also locally scoped; unless functionality is specifically "exported", allowing external usage.
 
 ```ts
 // file: a.ts
@@ -220,16 +220,58 @@ Using modules is an important feature for a larger project with lots of code, as
 Critique of Server/Client prototype
 ---------------------
 
-### (name of Issue 1)
+### Server Handling of Split Packets
 
-(A code snippet example demonstrating the feature - 1 mark)
-(Explain why this pattern is problematic - 40ish words 1 mark)
+```py
+# Snippet illustrating the issue, some code has been removed that is not related to the issue
+def serve_app(func_app, port, host=''):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        with conn:
+            data = conn.recv(65535)  # <-- Start of issue
 
-### (name of Issue 2)
+            try:
+                request = parse_request(data)
+            except InvalidHTTPRequest as ex:
+                log.exception("InvalidHTTPRequest")
+                continue
 
-(A code snippet example demonstrating the feature - 1 mark)
-(Explain why this pattern is problematic - 40ish words 1 mark)
+            while int(request.get('content-length', 0)) > len(request['body']):  # <-- Fix that does not always work
+                request['body'] += conn.recv(65535).decode('utf8')
+```
 
+The prototype server implementation has an issue, where if concurrent requests are sent and packets are split; it becomes unstable and crashes at random. This is a problem with not only multiple users, but even having one active user making concurrent requests will cause the server to crash, which may result in data loss. This issue could of been solved by using a web framework where the server is tested and known to be working.
+
+- [Original Code Source](https://github.com/enchant97/frameworks_and_languages_module/blob/13eed800212051ec10804221e2aab8317f60e587/example_server/app/http_server.py#L112)
+
+### Client Manual Creation/Modification Of Elements
+
+```js
+function renderDataToTemplate(data, $template, renderFieldLookup) {
+  for (let $el of $template.querySelectorAll(`[data-field]`)) {
+    const field = $el.dataset.field;
+    const value = data[field];
+    const renderFieldFunction = renderFieldLookup[field];
+    if (renderFieldFunction) {renderFieldFunction($el, value);}
+    else                     {$el.textContent = value;}
+  }
+}
+
+function renderItems(data) {
+  const $item_list = document.querySelector(`[data-page="items"] ul`);
+  const new_item_element = () => document.querySelector(`[data-page="items"] li`).cloneNode(true);
+
+  for (let item_data of data) {
+    const $new_item_element = new_item_element();
+    $item_list.appendChild($new_item_element);
+    renderDataToTemplate(item_data, $new_item_element, renderItemListFieldLookup);
+    attachDeleteAction($new_item_element);
+  }
+}
+```
+
+The client prototype creates and modifies HTML elements manually. This is a problem it is not clear what each function is doing. If another developer took over maintaining the implemented functions it would be harder to determine what these functions are doing, especially since the code is not commented. This could have been fixed by using a client framework which allows the use of JSX or HTML templates, removing the need to create elements using JavaScript.
+
+- [Original Code Source](https://github.com/enchant97/frameworks_and_languages_module/blob/13eed800212051ec10804221e2aab8317f60e587/example_client/index.html)
 
 Future Technology Suggestions
 -----------------------------
