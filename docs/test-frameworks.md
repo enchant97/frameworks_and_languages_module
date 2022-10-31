@@ -268,16 +268,15 @@ Cypress (A Browser/End-to-End test Framework)
 * Setup (on gitpod without gui local - just an example) (normally you would run this heedlessly in containers)
     * ```bash
         mkdir cypress_test; cd cypress_test
+        sudo apt-get update && sudo apt-get install -y PASTE_DEPENDENCIES  # https://docs.cypress.io/guides/continuous-integration/introduction#Ubuntu-Debian
         npm install cypress
         cp ${GITPOD_REPO_ROOTS}/test_client/cypress.config.js .
-        sudo apt-get update && sudo apt-get install -y PASTE_DEPENDENCIES
-        # https://docs.cypress.io/guides/continuous-integration/introduction#Ubuntu-Debian
         ```
 * Save as `cypress/google.spec.cy.js`
 ```javascript
 describe('Google', () => {
     it('Search for university webpage and check university logo is present', () => {
-        cy.visit("https://www.google.co.uk?&hl=en&lr=lang_en");
+        cy.visit("https://www.google.co.uk?&hl=en&lr=lang_en")
             // * Hint: "Terms and Conditions" must be accepted - click the 'Accept All' button
         // * Perform a google search for canterbury christ church university (with a spelling mistake)
             // type text into the right input box?
@@ -378,7 +377,7 @@ describe('Google', () => {
 		cy.get('input[title="Search"]').should('be.visible').type("Canterbury christ chcurch uni{enter}")
 		cy.contains("canterbury.ac.uk").click()
 		cy.get("#onetrust-accept-btn-handler").click()
-		cy.get('img[alt="Canterbury Christ Church University Logo"]').should('be.visible')
+b		cy.get('img[alt="Canterbury Christ Church University Logo"]').should('be.visible')
 	});
 });
 ```
