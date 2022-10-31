@@ -8,6 +8,8 @@ import (
 // The datetime format from Python's isoformat()
 const PythonISOTimeFormat = "2006-01-02T15:04:05"
 
+// Checks whether any of the given values match any of the given values to find,
+// returns true as soon as one match is found
 func containsAll(values []string, toFind []string) bool {
 	valuesMap := make(map[interface{}]*interface{})
 	for _, v := range values {
@@ -24,6 +26,7 @@ func containsAll(values []string, toFind []string) bool {
 
 type PythonISOTime time.Time
 
+// Used when serializing time into iso format
 func (t PythonISOTime) MarshalJSON() ([]byte, error) {
 	formattedTime := time.Time(t).Format(PythonISOTimeFormat)
 	return []byte(fmt.Sprintf("\"%s\"", formattedTime)), nil
