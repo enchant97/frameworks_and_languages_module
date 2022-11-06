@@ -1,3 +1,7 @@
+/**
+ * A SolidJS component
+ * allowing for reuse when displaying multiple items on screen
+ */
 import { Component, For } from 'solid-js';
 import { Item } from '../core/types';
 

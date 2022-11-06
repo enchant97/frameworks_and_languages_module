@@ -1,3 +1,12 @@
+/**
+ * methods implementing the OpenAPI 3 spec.
+ * This should communicate with a running server
+ * that also implements the same spec
+ *
+ * SOURCE: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+ * SOURCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+ * SOURCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+ */
 import { ItemCreate, Item } from "./types";
 
 const DEFAULT_HEADERS = {

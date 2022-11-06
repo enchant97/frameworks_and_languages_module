@@ -1,3 +1,7 @@
+/**
+ * A SolidJS component
+ * Separating out logic from the App component
+ */
 import { Component } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { ItemCreate } from '../core/types';
@@ -7,6 +11,8 @@ type NewItemFormProps = {
 }
 
 const NewItemForm: Component<NewItemFormProps> = (props) => {
+  // SOURCE: https://www.solidjs.com/tutorial/stores_createstore
+  // Using a store to group related signals into one
   const [fields, setFields] = createStore<ItemCreate>({
     user_id: "",
     keywords: [],
