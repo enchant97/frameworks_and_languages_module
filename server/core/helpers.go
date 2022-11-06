@@ -11,11 +11,13 @@ const PythonISOTimeFormat = "2006-01-02T15:04:05"
 // Checks whether any of the given values match any of the given values to find,
 // returns true as soon as one match is found
 func containsAll(values []string, toFind []string) bool {
+	// convert the values array into a map, allowing for faster comparisons
 	valuesMap := make(map[interface{}]*interface{})
 	for _, v := range values {
 		valuesMap[v] = nil
 	}
-
+	// iterate over all toFind values,
+	// returning false if the value is not found
 	for _, v := range toFind {
 		if _, exists := valuesMap[v]; !exists {
 			return false

@@ -1,5 +1,10 @@
 package core
 
+/*
+This contains the models used for binding data
+and storing in the fake database
+*/
+
 // The struct used when a user wants to add a new item
 type ItemCreate struct {
 	UserID      string   `json:"user_id" binding:"required"`

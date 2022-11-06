@@ -1,11 +1,16 @@
 package core
 
+/*
+This contains methods to give the fake database CRUD functionality
+*/
+
 import (
 	"sort"
 	"strings"
 	"time"
 )
 
+// default radius to use when filtering items
 const defaultRadius = 5
 
 // Create a new item in fake database
@@ -22,7 +27,9 @@ func CreateNewItem(item ItemCreate) Item {
 		DateFrom:    PythonISOTime(time.Now()),
 		DateTo:      nil,
 	}
+	// Insert the new item into the fake database with the previously set id
 	fakeItemDB[currentID] = createdItem
+	// increment the id, we are faking a database's AUTOINCREMENT feature
 	nextItemID++
 	return createdItem
 }
@@ -40,6 +47,7 @@ func GetItemByID(itemID int64) *Item {
 func GetItems() []Item {
 	// Get the keys (item id's) from fake database
 	keys := make([]int, len(fakeItemDB))
+	// iterate over hashmap to store all key's (item ids)
 	i := 0
 	for k := range fakeItemDB {
 		keys[i] = int(k)
@@ -49,6 +57,7 @@ func GetItems() []Item {
 	sort.Ints(keys)
 	// Create a slice to contain the sorted items
 	items := make([]Item, len(keys))
+	// Iterate over all hashmap keys and insert the elements into the array
 	for i, k := range keys {
 		items[i] = fakeItemDB[int64(k)]
 	}
@@ -67,15 +76,19 @@ func GetItemsFiltered(filters ItemsFilter) []Item {
 
 	filteredItems := make([]Item, 0)
 
+	// apply a default radius, if none was given
 	if filters.Radius == nil {
 		rad := float64(defaultRadius)
 		filters.Radius = &rad
 	}
+	// apply a default date-to (current system time), if none was given
 	if filters.DateTo == nil {
 		now := PythonISOTime(time.Now())
 		filters.DateTo = &now
 	}
 
+	// filter all items, using the given filters
+	// uses a basic linear search, comparing each filter to current element
 	for _, item := range items {
 		if filters.UserID != nil && item.UserID != *filters.UserID {
 			// check if user does not match

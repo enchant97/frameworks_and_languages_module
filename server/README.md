@@ -1,8 +1,51 @@
 Server
 ======
-This directory contains the prototype server code for "Freecycle-Inc" service.
+This directory contains the prototype server code for "Freecycle-Inc" service. This server is a REST API following the OpenAPI 3 spec shown in the [../openapi.yml](../openapi.yml) file. This server does not directly have a user interface as it has been designed for another program to be built to communicate with it.
 
-## Prod
+## Usage
+Because this is REST API it does not have a user interface, we can instead make web requests to it. The following are examples using the curl program.
+
+Create new item:
+
+```sh
+curl -X POST -d '{
+  "user_id": "user1234",
+  "keywords": [
+    "hammer",
+    "nails",
+    "tools"
+  ],
+  "description": "A hammer and nails set",
+  "image": "https://placekitten.com/200/300",
+  "lat": 51.2798438,
+  "lon": 1.0830275
+}' http://127.0.0.1:8000/item/
+# response - 201
+'{
+  "id": 0,
+  "user_id": "user1234",
+  "keywords": [
+    "hammer",
+    "nails",
+    "tools"
+  ],
+  "description": "A hammer and nails set",
+  "image": "https://placekitten.com/200/300",
+  "lat": 51.2798438,
+  "lon": 1.0830275,
+  "date_from": "2022-11-06T11:48:12.592Z"
+}'
+```
+
+Delete existing item:
+
+```sh
+curl -X DELETE http://127.0.0.1:8000/item/0
+# response - 204
+```
+
+## Deployment
+### Prod
 This app is designed to be deployed with Docker. The following command will build the app, configured ready for production:
 
 ```sh
@@ -15,12 +58,11 @@ Then run like this:
 docker run -p 8000:8000 server
 ```
 
-## Dev
+### Dev
 During development Docker is not required for running. The following requirements will need to be installed and accessible on the PATH:
 
 - Golang 1.19
 
-### Usage
 To run the development server you can use this command:
 
 ```sh

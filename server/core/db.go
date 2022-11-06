@@ -1,5 +1,9 @@
 package core
 
+/*
+This contains the fake items's database
+*/
+
 // The fake database next index to use,
 // really just a fake sql auto increment
 var nextItemID int64 = 1
