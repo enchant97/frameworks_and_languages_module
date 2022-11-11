@@ -51,7 +51,7 @@ func main() {
 }
 ```
 
-This is useful for the project as it is required to add CORS support to the routes. Using middleware cuts down on the amount of repeated code that would be required to add CORS to multiple routes. By having the same code run over all CORS routes we can ensure that if the code works for one route; it will work for all, this reduces bugs.
+This is useful for the project as it is required to add CORS support to the routes. Using middleware cuts down on the amount of repeated code that would be required to add CORS to multiple routes. By having the same code run over all CORS routes we can ensure that if the code works for one route; it will work for all.
 
 - [Gin-Gonic Middleware](https://gin-gonic.com/docs/examples/custom-middleware/)
 
@@ -77,7 +77,7 @@ func main() {
 }
 ```
 
-Having reduced "boilerplate" code allows for quicker implementation of new features and less bugs, due to repeated tasks being added with minimal code. For example adding a new "GET" route only requires one line of code. Having less code will also aid future developers when they are maintaining/adding to the existing code, as there will be less duplicated code.
+Having reduced "boilerplate" code allows for more time to be used for implementing new features. For example adding a new "GET" route only requires one line of code. Having less code will also aid future developers when they are maintaining/adding to the existing code, as there will be less duplicated code.
 
 - [Gin-Gonic Quickstart](https://gin-gonic.com/docs/quickstart/)
 
@@ -99,7 +99,7 @@ func main() {
 }
 ```
 
-Having an error as a type means that Go's type assertion can be used to check specific errors, this is useful as it allows different errors to be handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less bugs and prevent fatal crashes.
+Having an error as a type means that Go's type assertion can be used to check specific errors, this is useful as it allows different errors to be handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less unexpected results.
 
 - [Go Error Handling](https://go.dev/blog/error-handling-and-go)
 
@@ -130,7 +130,7 @@ JSX is a syntax for building dynamic components using a syntax similar to HTML. 
 <h1>Welcome {username()}</h1>
 ```
 
-JSX makes it more readable for developers when writing dynamic HTML for a component as it looks very similar to HTML. JSX also allows for Solid's reactivity to be added directly into the JSX for a component. Unlike HTML it does not allow unclosed tags, this will ensure that there are less unexpected results from bugs.
+JSX makes it more readable for developers when writing dynamic HTML for a component as it looks very similar to HTML. JSX also allows for Solid's reactivity to be added directly into the JSX for a component. Unlike HTML it does not allow unclosed tags, this will ensure that there are less unexpected results.
 
 - [SolidJS JSX](https://www.solidjs.com/tutorial/introduction_jsx)
 
@@ -152,7 +152,7 @@ function Users() {
 }
 ```
 
-Components are useful as they allow us to maintain DRY code, this reduces the amount of code written and the amount of potential bugs. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; which makes the workflow more efficient.
+Components are useful as they allow us to maintain DRY code, this reduces the amount of code written. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; which makes the workflow more efficient.
 
 - [SolidJS Component](https://www.solidjs.com/tutorial/introduction_components)
 
@@ -192,7 +192,7 @@ function log_user(user: User) {
 }
 ```
 
-This is useful for developers (and the project) as it catches possible usage errors without running any of the code. It can also enable auto complete and suggestions for a developers editor, allowing them to implement features with less bugs that would otherwise slow down features being completed.
+This is useful for developers (and the project) as it catches possible usage errors without running any of the code. It can also enable auto complete and suggestions for a developers editor.
 
 - [TypeScript Static Type Checking](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 
@@ -213,7 +213,7 @@ function main() {
 }
 ```
 
-Using modules is an important feature for a larger project with lots of code, as it allows for code to be separated into an organised structure. This aids developers in understanding where specific features are being used, allowing for better readability. Modules also allows for features to be used in multiple places, which can reduce bugs when a feature needs to be updated, allowing for only one place to be changed, instead of changing many repeated implementations.
+Using modules is an important feature for a larger project with lots of code, as it allows for code to be separated into an organised structure. This aids developers in understanding where specific features are being used, allowing for better readability. Modules also allows for features to be used in multiple places.
 
 - [TypeScript Modules](https://www.typescriptlang.org/docs/handbook/modules.html)
 
