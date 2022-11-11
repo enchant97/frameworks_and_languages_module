@@ -169,7 +169,7 @@ function Counter() {
 }
 ```
 
-Having signals allows the developer to not need to remember every element on screen that needs updates; each time a component changes. A difference with using signals compared to other frameworks is that they cannot be used like a normal variable, instead they are accessed using a get/set method.
+Signals ensure that all components that "listen" to one get updated when the value is modified elsewhere. A difference with using signals compared to other frameworks (like React) is that they cannot be used like a normal variable, instead they are accessed using a get/set method, this ensures that the developer is always using the reactivity.
 
 - [SolidJS Signals](https://www.solidjs.com/tutorial/introduction_signals)
 
