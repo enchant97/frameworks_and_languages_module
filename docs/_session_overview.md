@@ -18,10 +18,11 @@
     * Language Features
 * Session 7 - Monday 14th November
     * Framework example - code review
-    * Without a Framework - code review
 * Session 8 - Monday 21st November
-    * Frameworks in other domains
+    * Without a Framework - code review
+    * Other Frameworks/Tech/Approaches
 * Session 9 - Monday 28th November
+    * Containers (revisited)
     * Engineering stories
 * Session 10 - Monday 5th December
     * Assignment Workshop

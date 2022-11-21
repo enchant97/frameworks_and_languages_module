@@ -1,5 +1,5 @@
-Other Stuff
-===========
+Other Frameworks/Tech/Approaches
+================================
 
 We've covered REST apis's and Single-Page-Webapps .. the world is a LOT bigger.
 
@@ -10,16 +10,20 @@ Objectives
         * Future self learning ..?
     * What problem are these technologies trying to solve
 
-Overview
-* 2 Hour Lecture + Writing Workshop Experiment (whiteboard.fi)
-* 2 Hour Tutorial with project - formatively assessing progress
 
 Company TechStack
 -----------------
 
+* KaraKara tech stack
+    *  python, typescript, sanic, hyperapp, mqtt, ffmpeg
 * [How to OVER Engineer a Website // What is a Tech Stack?](https://www.youtube.com/watch?v=Sxxw3qtb3_g) YouTube 11min FireShip
     * Talks though all the tech for client, server, ci, containers and then suggests a cutdown concept
     * [stackshare.io/stacks](https://stackshare.io/stacks) - Popular Tech Stacks: The open source tools and SaaS behind popular tech companies
+* Companies often list their tech stack in job descriptions
+    * e.g. [MultiVerse Careers](https://www.multiverse.io/en-GB/careers) look for 'Software Engineers'
+        * Elixir, Phoenix, Postgres, LiveView, Elm, Docker, Terraform & AWS
+
+TASK: Using stackshare.io, find a company and find some technologies in it's tech stack
 
 
 Serverless Architecture
@@ -27,12 +31,15 @@ Serverless Architecture
 
 * Not a framework - more of a methodology
 * You don't run your own http server - the provider does
-* lxc to lxd
+* a cloud function == container with ram and disk state ready to go - ready to be deployed/run to any edge in the world
     * aws lambda
+* Pay per function execution
+    * Investigate the cost of a aws lambda function in London https://aws.amazon.com/lambda/pricing/
+* No visitors/users == no idle server costs
+* Billions of visitors == fine (you just pay per function execution) Infinite(?) scaling!
 
 * https://www.twilio.com/docs/glossary/what-is-serverless-architecture
-
-Question: What problem is serverless trying to solve?
+* [Tutorial: Build a Hello World REST API with Lambda proxy integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html)
 
 ### Edge rendering
 
@@ -47,6 +54,21 @@ Question: What problem is serverless trying to solve?
         * Edge Caching to quickly serve static files to users globally
 
 
+Question: What problem is 'serverless' trying to solve?
+
+
+NoSQL
+-----
+
+* https://www.guru99.com/nosql-tutorial.html
+* https://www.freecodecamp.org/news/nosql-databases-5f6639ed9574/
+* Fireship: [7 Database Paradigms](https://www.youtube.com/watch?v=W2Z7fbCLSTw) YouTube 10min
+* Traditional relational databases are ridged to maintain data consistency (all or nothing! locking transactions)
+* The concept of 'eventual consistency'
+
+Question: What problems is NoSQL trying to solve?
+
+
 GraphQL
 -------
 
@@ -54,16 +76,9 @@ GraphQL
 * https://www.howtographql.com/basics/1-graphql-is-the-better-rest/ page + (12min video)
 
 Question: When would you use GraphQL over REST? Is there a point in ever using REST?
-What problems is REST tring to solve?
+What problems is GraphQL tring to solve?
 
-NoSQL
------
 
-https://www.guru99.com/nosql-tutorial.html
-https://www.freecodecamp.org/news/nosql-databases-5f6639ed9574/
-eventual consistency
-
-Question: What problems is NoSQL trying to solve?
 
 
 IPFS + Blockchain hosting
@@ -78,24 +93,6 @@ IPFS + Blockchain hosting
 
 Question: What is the problem IPFS is trying to solve?
 
-
-BlockChain Applications
------------------------
-
-### Hyperledger
-* [introduction](https://hyperledger.github.io/composer/v0.19/introduction/introduction.html)
-    * Hyperledger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier.
-    * [key-concepts]https://hyperledger.github.io/composer/v0.19/introduction/key-concepts.html
-
-
-Omni? Frameworks
-----------------
-
-### Fusion
-* [Stl.Fusion](https://github.com/servicetitan/Stl.Fusion)
-    * [How Similar Is Fusion to SignalR?](https://medium.com/swlh/how-similar-is-stl-fusion-to-signalr-e751c14b70c3)
-        * Modelling an application based on state changes that propagate to client
-        * > the only end result of your actions is that the client-side state (of every client) becomes consistent with the server-side state!
 
 
 Static Site Generation
@@ -113,7 +110,70 @@ Other approach: Static Site Generation
     * [next.js](https://nextjs.org/) Typescript
         * hybrid static & server rendering
 
+
+https://github.com/calaldees/TeachProgramming/tree/master/teachprogramming/static/projects/web/static_site_generation/nikola
+```Makefile
+# Nikola in Docker - Inspired by https://getnikola.com/getting-started.html
+
+DOCKER_IMAGE:=dragas/nikola:alpine
+CONTAINER_WORKDIR:=/nikola/
+USER=$(shell id -u):$(shell id -g)
+DOCKER_RUN_PARMS:=docker run --rm -it --user ${USER} --volume ${PWD}:${CONTAINER_WORKDIR} --publish 8000:8000
+DOCKER_RUN:=${DOCKER_RUN_PARMS} --workdir ${CONTAINER_WORKDIR}/demo ${DOCKER_IMAGE}
+
+
+serve: demo/output
+	${DOCKER_RUN} nikola auto --address 0.0.0.0
+demo/output: demo
+	${DOCKER_RUN} nikola build
+demo:
+	${DOCKER_RUN_PARMS} --workdir ${CONTAINER_WORKDIR} ${DOCKER_IMAGE} nikola init -q --demo ./demo
+shell:
+	${DOCKER_RUN} /bin/sh
+
+# edit some of the text in (auto-reload? or start/stop server) + see changes
+#	demo/posts/1.rst
+#	demo/pages/listing-demo.rst
+```
+
 Question: When would you use static site generation?
+Question: What problem is static-site-generation trying to solve?
+
+
+Server State Frameworks
+-----------------------
+
+### Fusion
+* [Stl.Fusion](https://github.com/servicetitan/Stl.Fusion)
+    * > Fusion is a .NET library that implements Distributed REActive Memoization (DREAM) – a novel technique that gracefully solves a number of well-known problems
+    * Fusion+Blazor Sample delivering real-time updates to 3 browser windows ... (see link above)
+        * https://fusion-samples.servicetitan.com/consistency
+    * [How Similar Is Fusion to SignalR?](https://medium.com/swlh/how-similar-is-stl-fusion-to-signalr-e751c14b70c3)
+        * Modelling an application based on state changes that propagate to client
+        * > the only end result of your actions is that the client-side state (of every client) becomes consistent with the server-side state!
+### Phoenix LiveView (Elixir)
+* [Phoenix.LiveView behaviour](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html) 
+    * > LiveView provides rich, real-time user experiences with server-rendered HTML
+
+Question: What problem is the 'DREAM' pattern trying to solve?
+
+
+BlockChain Applications
+-----------------------
+
+### Hyperledger
+* [introduction](https://hyperledger.github.io/composer/v0.19/introduction/introduction.html)
+    * Hyperledger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier.
+    * [key-concepts]https://hyperledger.github.io/composer/v0.19/introduction/key-concepts.html
+
+Question: What problems are blockchain applications trying to solve?
+
+
+---
+
+Question: What technology today was the most interesting and why?
+
+---
 
 
 Mobile Frameworks
