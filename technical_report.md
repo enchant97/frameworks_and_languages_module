@@ -246,16 +246,6 @@ The prototype server implementation has an issue, where if concurrent requests a
 ### Client Manual Creation/Modification Of Elements
 
 ```js
-function renderDataToTemplate(data, $template, renderFieldLookup) {
-  for (let $el of $template.querySelectorAll(`[data-field]`)) {
-    const field = $el.dataset.field;
-    const value = data[field];
-    const renderFieldFunction = renderFieldLookup[field];
-    if (renderFieldFunction) {renderFieldFunction($el, value);}
-    else                     {$el.textContent = value;}
-  }
-}
-
 function renderItems(data) {
   const $item_list = document.querySelector(`[data-page="items"] ul`);
   const new_item_element = () => document.querySelector(`[data-page="items"] li`).cloneNode(true);
