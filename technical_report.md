@@ -55,11 +55,13 @@ This is useful for the project as it is required to add CORS support to the rout
 
 - [Gin-Gonic Middleware](https://gin-gonic.com/docs/examples/custom-middleware/)
 
-### Minimal Code Required
-
-Selecting Gin as the framework for the project allows for reduced code for main functionality. For example implementing routes to accept different methods (GET, POST, etc) is done by adding a method to the Gin engine for example:
+### Routing
+Gin allows a url path to be mapped to a method of a specific route. It can also be configured to accept different methods (GET, POST, etc). A single route in Gin can be configured in a single line. Unlike Django, routing does not have to be setup in a specific file, it also keeps the method with the route mapping.
 
 ```go
+// main.go
+package main
+
 import "github.com/gin-gonic/gin"
 
 func getIndex(c *gin.Context) {
@@ -77,9 +79,22 @@ func main() {
 }
 ```
 
-Having reduced "boilerplate" code allows for more time to be used for implementing new features. For example adding a new "GET" route only requires one line of code. Having less code will also aid future developers when they are maintaining/adding to the existing code, as there will be less duplicated code.
+```py
+# urls.py
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    # unclear whether this is GET, POST, etc
+    path("/", views.index),
+]
+```
+
+Keeping the route mappings with the accepted http method; reduces the need to look in multiple files to see what method will be called for a given route definition. Having a single line required to add a route, reduces "boilerplate" code allowing for less lines of code to be required for a basic app to be implemented.
 
 - [Gin-Gonic Quickstart](https://gin-gonic.com/docs/quickstart/)
+- [Django Urls](https://docs.djangoproject.com/en/4.0/topics/http/urls/)
 
 Server Language Features
 -----------------------
