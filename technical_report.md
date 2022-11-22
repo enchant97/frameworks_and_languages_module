@@ -142,7 +142,10 @@ Client Framework Features
 JSX is a syntax for building dynamic components using a syntax similar to HTML. SolidJS has modifications to ensure it looks closer to the HTML standards. If TypeScript is being used it will also be type checked.
 
 ```jsx
-<h1>Welcome {username()}</h1>
+<div class="container">
+  <h1>Welcome {username()}</h1>
+  <button onclick={onClickMeClicked}>Click Me!</button>
+</div>
 ```
 
 JSX makes it more readable for developers when writing dynamic HTML for a component as it looks very similar to HTML. JSX also allows for Solid's reactivity to be added directly into the JSX for a component. Unlike HTML it does not allow unclosed tags, this will ensure that there are less unexpected results.
