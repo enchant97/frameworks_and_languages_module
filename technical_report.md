@@ -212,7 +212,7 @@ This is useful for developers (and the project) as it catches possible usage err
 - [TypeScript Static Type Checking](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 
 ### Modules
-TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. In TypeScript modules are also locally scoped; unless functionality is specifically "exported", allowing external usage.
+TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. These files could be in the same project or from an external library. These modules can also be imported multiple times in different other modules.
 
 ```ts
 // file: a.ts
@@ -228,7 +228,7 @@ function main() {
 }
 ```
 
-Using modules is an important feature for a larger project with lots of code, as it allows for code to be separated into an organised structure. This aids developers in understanding where specific features are being used, allowing for better readability. Modules also allows for features to be used in multiple places.
+Using modules with good naming conventions and an organised structure; allows for clear navigation to specific features, preventing the need to navigate through a single large file with many lines. This aids new and existing developers to understand where specific functionally is defined.
 
 - [TypeScript Modules](https://www.typescriptlang.org/docs/handbook/modules.html)
 
