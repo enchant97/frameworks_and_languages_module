@@ -239,7 +239,7 @@ def serve_app(func_app, port, host=''):
                 request['body'] += conn.recv(65535).decode('utf8')
 ```
 
-The prototype server implementation has an issue, where if concurrent requests are sent and packets are split; it becomes unstable and crashes at random. This is a problem with not only multiple users, but even having one active user making concurrent requests will cause the server to crash, which may result in data loss. This issue could of been solved by using a web framework where the server is tested and known to be working.
+The prototype server implementation has an issue, where if concurrent requests are sent and there are split packets; the server starts to operate non-deterministically and causes certain packets to be ignored. This is a problem with not only multiple users, but even having one active user making concurrent requests will cause these issues, this may result in data loss. This issue could of been solved by following the WSGI specification which most well known web frameworks follow.
 
 - [Original Code Source](https://github.com/enchant97/frameworks_and_languages_module/blob/13eed800212051ec10804221e2aab8317f60e587/example_server/app/http_server.py#L112)
 
