@@ -9,7 +9,7 @@ Server Framework Features
 
 ### Data Binding & Validation
 
-Data Binding in Gin is where raw data is serialised into a specific layout, for example when serializing a JSON string into a struct. It can also be used to ensure that the data matches the given schema. In the Gin-Gonic; framework struct field tags are used to add rules for the validation library (Validator) to apply.
+Data Binding in Gin is where raw data is serialised into a specific layout, for example when serializing a JSON string into a struct. It can also be used to ensure that the data matches the given schema. In the Gin-Gonic framework; struct field tags are used to add rules for the validation library (Validator) to apply.
 
 ```go
 type Person struct {
@@ -26,14 +26,14 @@ func createPerson(c *gin.Context) {
 }
 ```
 
-This is useful for this project as we have a REST API that accepts data from the client in JSON format. When serialising this data into a struct we can ensure that it is valid and the given fields also match the requirements. For the code example the field "Name" is marked as required, so it will produce an error when it is missing. Data binding has reduced the amount of code needed for validating the data, as we can simply specify the requirements inside a struct tag.
+This is useful for this project as we have a REST API that accepts data from the client in JSON format. When serialising this data into a struct we can ensure that it is valid and the given fields also match the schema. For the code example the field "Name" is marked as required, so it will produce an error when it is missing. Data binding has reduced the amount of code needed for validating the data, as we can simply specify the requirements inside a struct tag.
 
 - [Gin-Gonic Data-Binding](https://gin-gonic.com/docs/examples/bind-query-or-post/)
 - [Validator Lib](https://pkg.go.dev/gopkg.in/validator.v2)
 
 ### Middleware Support
 
-Middleware in relation to the project is where we can add pre-processing and post-processing to requests and responses to add functionality and perform checks on data. It also allows us to add features without interacting directly with the middleware; as it simply wraps around the existing code.
+Middleware allows adding pre-processing and post-processing to requests and responses to add functionality and perform checks on data. It also allows us to add features without interacting directly with the middleware; as it simply wraps around the existing code.
 
 ```go
 import (
@@ -51,7 +51,7 @@ func main() {
 }
 ```
 
-This is useful for the project as it is required to add CORS support to the routes. Using middleware cuts down on the amount of repeated code that would be required to add CORS to multiple routes. By having the same code run over all CORS routes we can ensure that if the code works for one route; it will work for all.
+This is useful for the project as it allows for adding CORS support to the routes. Using middleware cuts down on the amount of repeated code that would be required to add CORS to multiple routes. By having the same code run over all CORS routes we can ensure that if the code works for one route; it will work for all.
 
 - [Gin-Gonic Middleware](https://gin-gonic.com/docs/examples/custom-middleware/)
 
@@ -91,7 +91,7 @@ urlpatterns = [
 ]
 ```
 
-Keeping the route mappings with the accepted http method; reduces the need to look in multiple files to see what method will be called for a given route definition. Having a single line required to add a route, reduces "boilerplate" code allowing for less lines of code to be required for a basic app to be implemented.
+Keeping the route mappings with the accepted http method; reduces the need to look in multiple files to see what method will be called for a given route definition. Having a single line required to add a route; reduces "boilerplate" code, allowing for less lines of code to be required for a basic app to be implemented.
 
 - [Gin-Gonic Quickstart](https://gin-gonic.com/docs/quickstart/)
 - [Django Urls](https://docs.djangoproject.com/en/4.0/topics/http/urls/)
@@ -114,7 +114,7 @@ func main() {
 }
 ```
 
-Having an error as a type means that Go's type assertion can be used to check specific errors, this is useful as it allows different errors to be handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less unexpected results.
+Having an error as a type means that Go's type assertion can be used to check and handle specific errors, this is useful as it allows specific errors to be handled differently. Since all created errors use the error type, handling all/unknown errors is possible; this will ensure that there are less unexpected results.
 
 - [Go Error Handling](https://go.dev/blog/error-handling-and-go)
 
@@ -170,12 +170,12 @@ function Users() {
 }
 ```
 
-Components are useful as they allow us to maintain DRY code, this reduces the amount of code written. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; which makes the workflow more efficient.
+Components are useful as they allow us to maintain DRY code, this reduces the amount of code written. If the project was worked on by multiple developers it also allows for different teams to work on different sections of the project simultaneously; making the workflow more efficient.
 
 - [SolidJS Component](https://www.solidjs.com/tutorial/introduction_components)
 
 ### Signals
-To make an app reactive in SolidJS signals can be created. Signals can track modifications and update listening components when they change, this enables the app to update data and have it display updated on the users screen.
+To make an app reactive in SolidJS signals can be created. Signals can track and react to modifications, updating listening components when they change.
 
 ```jsx
 import { createSignal } from "solid-js";
@@ -187,7 +187,7 @@ function Counter() {
 }
 ```
 
-Signals ensure that all components that "listen" to one get updated when the value is modified elsewhere. A difference with using signals compared to other frameworks (like React) is that they cannot be used like a normal variable, instead they are accessed using a get/set method, this ensures that the developer is always using the reactivity.
+Signals ensure that all components that are "listening" get updated when the value is modified elsewhere. A difference with using signals compared to other frameworks (like React) is that they cannot be used like a normal variable, instead they are accessed using a get/set method, this ensures that the developer is always using the reactivity.
 
 - [SolidJS Signals](https://www.solidjs.com/tutorial/introduction_signals)
 
@@ -195,7 +195,7 @@ Client Language Features
 ------------------------
 
 ### Strongly Typed
-TypeScript adds type checking into JavaScript to help catch errors before running any code. For the example shown below a "User" type is created, which can be added to the argument for the `log_user()` method. TypeScript will then ensure that any value passed to this method has that type, it will also ensure that usage of this value is supported by that type.
+TypeScript adds type checking into JavaScript to help catch syntax and type errors before runtime. For the example shown below a "User" type is created, which can be added to the argument for the `log_user()` method. TypeScript will then ensure that any value passed to this method has that type, it will also ensure that usage of this value is supported by that type.
 
 ```ts
 type User = {
@@ -215,7 +215,7 @@ This is useful for developers (and the project) as it catches possible usage err
 - [TypeScript Static Type Checking](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 
 ### Modules
-TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. These files could be in the same project or from an external library. These modules can also be imported multiple times in different other modules.
+TypeScript has support for modules which allows a TypeScript file to import specific features from another TypeScript file. These files could be in the same project or from an external library. These modules can also be imported multiple times in other modules.
 
 ```ts
 // file: a.ts
@@ -277,7 +277,7 @@ function renderItems(data) {
 }
 ```
 
-The client prototype creates and modifies HTML elements manually. This is a problem it is not clear what each function is doing. If another developer took over maintaining the implemented functions it would be harder to determine what these functions are doing, especially since the code is not commented. This could have been fixed by using a client framework which allows the use of JSX or HTML templates, removing the need to create elements using JavaScript.
+The client prototype creates and modifies HTML elements manually. This is a problem as it is not clear what each function is doing. If another developer took over maintaining the implemented functions it would be harder to determine what these functions are doing, especially since the code is not commented. This could have been fixed by using a client framework which allows the use of JSX or HTML templates, removing the need to create elements using JavaScript.
 
 - [Original Code Source](https://github.com/enchant97/frameworks_and_languages_module/blob/13eed800212051ec10804221e2aab8317f60e587/example_client/index.html)
 
