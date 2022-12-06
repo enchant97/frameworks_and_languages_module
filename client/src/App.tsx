@@ -45,22 +45,30 @@ const App: Component = () => {
   }
 
   return (
-    <div class='md:container md:mx-auto px-2'>
-      <h1 class='text-center text-3xl'>FreeCycle</h1>
-      <p class='text-center'>{apiURL}</p>
-      <section class='mt-2'>
-        <h2 class='text-center text-xl'>Create New</h2>
-        <NewItemForm onSubmit={onNewItemSubmit} />
-      </section>
-      <section class='mt-2' data-page="items">
-        <h2 class='text-center text-xl'>Items</h2>
-        <ul class='grid grid-cols-3 gap-2'>
-          <For each={items()}>
-            {item => <li class='border-2 rounded p-2'><SingleItem item={item} onDeleteClick={onItemDelete} /></li>}
-          </For>
-        </ul>
-      </section>
-    </div>
+    <>
+      <header>
+        <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+          <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+            <a class="text-3xl text-black" href="#">FreeCycle</a>
+            <span class='truncate' style="max-width: 10rem;">{apiURL}</span>
+          </div>
+        </nav>
+      </header>
+      <main class='md:container md:mx-auto px-2'>
+        <section class='mt-2'>
+          <h2 class='text-center text-xl'>Create New</h2>
+          <NewItemForm onSubmit={onNewItemSubmit} />
+        </section>
+        <section class='mt-2' data-page="items">
+          <h2 class='text-center text-xl'>Items</h2>
+          <ul class='grid grid-cols-3 gap-2'>
+            <For each={items()}>
+              {item => <li class='border-2 rounded p-2'><SingleItem item={item} onDeleteClick={onItemDelete} /></li>}
+            </For>
+          </ul>
+        </section>
+      </main>
+    </>
   );
 };
 
