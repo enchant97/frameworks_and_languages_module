@@ -17,13 +17,14 @@
 * Session 6 - Monday 7th November
     * Language Features
 * Session 7 - Monday 14th November
-    * Framework example - code review
+    * Full webapp case study example - investigation
 * Session 8 - Monday 21st November
-    * Without a Framework - code review
-    * Other Frameworks/Tech/Approaches
+    * Prototype 'Without a Framework' - code review (overran)
+    * Other Frameworks/Tech/Approaches (part 1)
 * Session 9 - Monday 28th November
-    * Containers (revisited)
-    * Engineering stories
+    * Other Frameworks/Tech/Approaches (cont part 2)
+    * Containers (implementation understanding)
 * Session 10 - Monday 5th December
-    * Assignment Workshop
+    * Engineering stories
 * Session 11 - Monday 12th December
+    * Assignment Workshop

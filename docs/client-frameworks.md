@@ -405,8 +405,11 @@ Client Further Reading
 * [Sizes of JS frameworks, just minified + minified and gzipped, (React, Angular 2, Vue, Ember)](https://gist.github.com/Restuta/cda69e50a853aa64912d)
 * MonoCubed [List of 10 Best Front end Frameworks](https://www.monocubed.com/best-front-end-frameworks/)
     * [Ember.js](https://emberjs.com/)
+        * build, testing, data layer - the whole set!
     * [Angular.io](https://angular.io/) Google
     * [ractive.js](https://www.ractivejs.org)
+    * [knockoutjs](https://knockoutjs.com/) - data binding framework, for any framework (how?)
+    * [MeteorJS](https://www.meteor.com/) - a full stack server/client wrapper for frameworks to deploy to any device? a framework frameworks?
 * Other Frameworks in other langauges
     * [fritz2](https://www.fritz2.dev/) Kotlin
     * [WebApps with PureScript & RactiveJS](https://blog.brakmic.com/webapps-with-purescript-and-ractivejs/)

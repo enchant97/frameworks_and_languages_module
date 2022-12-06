@@ -19,6 +19,7 @@ Company TechStack
 * [How to OVER Engineer a Website // What is a Tech Stack?](https://www.youtube.com/watch?v=Sxxw3qtb3_g) YouTube 11min FireShip
     * Talks though all the tech for client, server, ci, containers and then suggests a cutdown concept
     * [stackshare.io/stacks](https://stackshare.io/stacks) - Popular Tech Stacks: The open source tools and SaaS behind popular tech companies
+        * todo: find another site - stackshare is an ad-ridden mess
 * Companies often list their tech stack in job descriptions
     * e.g. [MultiVerse Careers](https://www.multiverse.io/en-GB/careers) look for 'Software Engineers'
         * Elixir, Phoenix, Postgres, LiveView, Elm, Docker, Terraform & AWS
@@ -109,6 +110,7 @@ Other approach: Static Site Generation
     * [nikola](https://getnikola.com/) Python
     * [next.js](https://nextjs.org/) Typescript
         * hybrid static & server rendering
+    * [gatsbyjs](https://www.gatsbyjs.com/) a static site generator with react?
 
 
 https://github.com/calaldees/TeachProgramming/tree/master/teachprogramming/static/projects/web/static_site_generation/nikola
@@ -161,9 +163,9 @@ Question: What problem is the 'DREAM' pattern trying to solve?
 BlockChain Applications
 -----------------------
 
-### Hyperledger
+### HyperLedger
 * [introduction](https://hyperledger.github.io/composer/v0.19/introduction/introduction.html)
-    * Hyperledger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier.
+    * HyperLedger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier.
     * [key-concepts]https://hyperledger.github.io/composer/v0.19/introduction/key-concepts.html
 
 Question: What problems are blockchain applications trying to solve?
@@ -189,14 +191,16 @@ Not really a framework, but your app sites within a bigger ecosystem
 Game Frameworks
 ---------------
 
-* if you are writing the `main` method and calling it - its a library
-* if you are writing code that is called by other code - that is using a framework
+* If you are writing the `main` method and calling it - its a library
+* If you are writing code that is called by other code - that is using a framework
 * engines are bigger suites of tools
 
 * [what-is-the-difference-between-a-game-framework-and-a-game-engine](https://gamedev.stackexchange.com/questions/31772/what-is-the-difference-between-a-game-framework-and-a-game-engine)
 * Example
     * [LittleJS](https://killedbyapixel.github.io/LittleJS/docs/) - The Tiny JavaScript Game Engine That Can
         * notice how you place your code with a known object structure
+        * [HelloWorld Example](https://github.com/calaldees/TeachProgramming/tree/master/teachprogramming/static/projects/game/frameworks/LittleJS)
+            * copy `Makefile` and `index.html`
     * [PyGame](https://en.wikipedia.org/wiki/Pygame)
         * https://realpython.com/pygame-a-primer/#basic-pygame-program
         * A library not a framework - if you implement the game loop - its not a framework

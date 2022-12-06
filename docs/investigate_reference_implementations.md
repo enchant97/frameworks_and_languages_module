@@ -30,3 +30,9 @@ This is a requirement of you Assignment 2.
 * Task 2 (1 hour)
     * (30min) Write some draft answers to `technical_report.md` and commit them
     * (30min) Teacher feedback and discussion
+
+<details>
+
+`http_server.py` is unneeded - this is reinventing the wheel
+http://wsgi.tutorial.codepoint.net/environment-dictionary
+</details>
