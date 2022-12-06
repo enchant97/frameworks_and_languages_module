@@ -6,7 +6,8 @@ import { Item, ItemCreate } from './core/types';
 
 const App: Component = () => {
   // SOURCE: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-  const apiURL = (new URLSearchParams(document.location.search)).get("api")
+  // SOURCE: https://stackoverflow.com/a/37832755
+  const apiURL = (new URLSearchParams(document.location.search)).get("api")?.replace(/\/+$/, "")
 
   // SOURCE: https://www.solidjs.com/tutorial/introduction_signals
   const [items, setItems] = createSignal<Item[]>([])
