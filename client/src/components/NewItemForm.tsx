@@ -23,6 +23,15 @@ const NewItemForm: Component<NewItemFormProps> = (props) => {
     e.preventDefault();
     // TODO add validation?
     props.onSubmit?.(fields)
+    // reset form to defaults
+    setFields({
+      user_id: "",
+      keywords: [],
+      description: "",
+      image: undefined,
+      lat: undefined,
+      lon: undefined,
+    })
   }
 
   return (
@@ -31,31 +40,37 @@ const NewItemForm: Component<NewItemFormProps> = (props) => {
         <label>User ID</label>
         <input
           class='border-2 rounded' type='text' name='user_id' required
+          value={fields.user_id}
           oninput={(e) => setFields('user_id', e.target.value)}
         />
         <label>Lat</label>
         <input
           class='border-2 rounded' type='number' name='lat'
+          value={fields.lat || 0}
           oninput={(e) => setFields('lat', parseFloat(e.target.value))}
         />
         <label>Lon</label>
         <input
           class='border-2 rounded' type='number' name='lon'
+          value={fields.lon || 0}
           oninput={(e) => setFields('lon', parseFloat(e.target.value))}
         />
         <label>Description</label>
         <textarea
           class='border-2 rounded' name="description" rows="3" required
+          value={fields.description}
           oninput={(e) => setFields('description', e.target.value)}
         ></textarea>
         <label>Image</label>
         <input
           class='border-2 rounded' type='url' name='image'
+          value={fields.image || ""}
           oninput={(e) => setFields('image', e.target.value)}
         />
         <label>Keywords</label>
         <input
           class='border-2 rounded' type='text' name='keywords'
+          value={fields.keywords.join(",")}
           oninput={(e) => setFields('keywords', e.target.value.split(","))}
         />
       </div>
