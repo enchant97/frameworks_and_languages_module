@@ -9,7 +9,7 @@ Server Framework Features
 
 ### Data Binding & Validation
 
-Data Binding in Gin is where raw data is serialised into a specific layout, for example when serializing a JSON string into a struct. It can also be used to ensure that the data matches the given schema. In the Gin-Gonic framework; struct field tags are used to add rules for the validation library (Validator) to apply.
+Data Binding in Gin is where raw data is serialised from JSON or XML using a predefined schema that is defined using a struct. Using data binding ensures that the raw data can be validated against the required schema. In the Gin-Gonic framework; struct field tags are used to add rules for the validation library (Validator) to check.
 
 ```go
 type Person struct {
@@ -26,7 +26,7 @@ func createPerson(c *gin.Context) {
 }
 ```
 
-This is useful for this project as we have a REST API that accepts data from the client in JSON format. When serialising this data into a struct we can ensure that it is valid and the given fields also match the schema. For the code example the field "Name" is marked as required, so it will produce an error when it is missing. Data binding has reduced the amount of code needed for validating the data, as we can simply specify the requirements inside a struct tag.
+This is useful for this project as we have a REST API that accepts data from the client in JSON format. When serialising this data into a struct we can ensure that it is valid and the given fields also match the schema. For the code example the field "Name" is marked as required, so it will produce a specific error when it is missing. Because validation rules are applied using struct tags; the amount of code needed to be written is reduced, as the library implements the rules.
 
 - [Gin-Gonic Data-Binding](https://gin-gonic.com/docs/examples/bind-query-or-post/)
 - [Validator Lib](https://pkg.go.dev/gopkg.in/validator.v2)
