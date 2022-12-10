@@ -1,8 +1,7 @@
 Technical Report
 ================
 
-(intro)
-
+This technical report contains descriptions for language and framework features which will guide the engineering team to decide on the most effient development path to take and why using frameworks can benefit over writing an application from scratch. It will also indicate future technology that could be used to aid development of the FreeCycle software for production use.
 
 Server Framework Features
 -------------------------
