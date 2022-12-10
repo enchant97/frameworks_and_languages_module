@@ -284,22 +284,18 @@ The client prototype creates and modifies HTML elements manually. This is a prob
 Future Technology Suggestions
 -----------------------------
 
-### (name of technology/feature 1)
+### Serverless (AWS Lambda)
+Using Serverless computing such as AWS Lambda allows for rapid deployment of application code without needing direct management of server infrastructure as the cloud provider handles this for you. Serverless does not have a idle running cost instead opting for paying per execution model, this can reduce costs when there is no active users. Using Serverless can also remove the need to think about scaling to keep up with users as it handles this automatically, with the advantage of directly running requests closest to users on demand; thus a service can be provided globally.
 
-(Description of a feature or tool - 40ish words - 1 mark)
-(Why/benefits/problems with using this - 40ish words - 1 mark)
-(Provide reference urls to your source of information about this technology - required)
+- [IBM Serverless](https://www.ibm.com/cloud/learn/serverless)
 
+### NoSQL (MongoDB)
+Using a NoSQL document database such as MongoDB allows for a more performant alternative to a traditional SQL database, that is also flexible to schema changes allowing for future application updates. MongoDB could be used as it supports both sharding and replication, which allows for distribution of data across multiple servers. This has the benefit of providing failover redundancy and for increasing performance with horizontal scaling. MongoDB also features a cloud service of their database called Atlas, which handles the maintenance of the database and provides automatic scaling. It can also integrate with Serverless computing.
 
-### (name of technology/feature 2)
+- [MongoDB Sharding](https://www.mongodb.com/docs/manual/sharding/)
+- [MongoDB Atlas](https://www.mongodb.com/atlas)
 
-(Description of a feature or tool - 40ish words - 1 mark)
-(Why/benefits/problems with using this - 40ish words - 1 mark)
-(Provide reference urls to your source of information about this technology - required)
+### Login Provider (auth0)
+An external login provider/system will allow the handling of user accounts and user login. Using a service such as auth0 can increase security as it has been certified for compliance by third-party security professionals. Using a login provider also allows for integrations with other login services such as a Google login, this can make it easier for user to sign-up without entering different credentials. It also supports MFA which can further secure user accounts without needing any extra code to be written.
 
-
-### (name of technology/feature 3)
-
-(Description of a feature or tool - 40ish words - 1 mark)
-(Why/benefits/problems with using this - 40ish words - 1 mark)
-(Provide reference urls to your source of information about this technology - required)
+- [auth0](https://auth0.com/)
