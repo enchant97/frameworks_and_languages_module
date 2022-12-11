@@ -295,6 +295,6 @@ Using a NoSQL document database such as MongoDB allows for a more performant alt
 - [MongoDB Atlas](https://www.mongodb.com/atlas)
 
 ### Login Provider (auth0)
-An external login provider/system will allow the handling of user accounts and user login. Using a service such as auth0 can increase security as it has been certified for compliance by third-party security professionals. Using a login provider also allows for integrations with other login services such as a Google login, this can make it easier for user to sign-up without entering different credentials. It also supports MFA which can further secure user accounts without needing any extra code to be written.
+An external login provider/system will allow the handling of user accounts and user login. Using a service such as auth0 can increase security as it has been certified for compliance by third-party security professionals. Using a login provider also allows for integrations with other login services such as a Google login, this can make it easier for a user to sign-up without entering different credentials. It also supports MFA which can further secure user accounts without needing any extra code to be written.
 
 - [auth0](https://auth0.com/)
