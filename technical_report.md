@@ -284,12 +284,12 @@ Future Technology Suggestions
 -----------------------------
 
 ### Serverless (AWS Lambda)
-Using Serverless computing such as AWS Lambda allows for rapid deployment of application code without needing direct management of server infrastructure as the cloud provider handles this for you. Serverless does not have a idle running cost instead opting for paying per execution model, this can reduce costs when there is no active users. Using Serverless can also remove the need to think about scaling to keep up with users as it handles this automatically, with the advantage of directly running requests closest to users on demand; thus a service can be provided globally.
+Using Serverless computing such as AWS Lambda allows for rapid deployment of applications/services as direct management of server infrastructure is not needed; as the cloud provider handles this for you. Serverless does not have a idle running cost instead opting for paying per execution model, this can reduce costs when there are no active users. Using Serverless can also remove the need to think about scaling to keep up with users as it handles this automatically, with the advantage of directly running requests closest to users on demand (reducing latency); thus a service can be provided globally.
 
 - [IBM Serverless](https://www.ibm.com/cloud/learn/serverless)
 
 ### NoSQL (MongoDB)
-Using a NoSQL document database such as MongoDB allows for a more performant alternative to a traditional SQL database, that is also flexible to schema changes allowing for future application updates. MongoDB could be used as it supports both sharding and replication, which allows for distribution of data across multiple servers. This has the benefit of providing failover redundancy and for increasing performance with horizontal scaling. MongoDB also features a cloud service of their database called Atlas, which handles the maintenance of the database and provides automatic scaling. It can also integrate with Serverless computing.
+Using a NoSQL document database such as MongoDB allows for more performant writes compared to a traditional SQL database as the whole database does not need to be locked. NoSQL also is more flexible to schema changes which can allow for small updates in the future, because of this flexibility large updates to the schema would require handling of old documents. MongoDB supports both sharding and replication, which allows for distribution of data across multiple servers. This has the benefit of providing failover redundancy and for increasing performance with horizontal scaling. MongoDB also features a cloud service of their database called Atlas, which handles the maintenance of the database and provides automatic scaling. It can also integrate with Serverless computing.
 
 - [MongoDB Sharding](https://www.mongodb.com/docs/manual/sharding/)
 - [MongoDB Atlas](https://www.mongodb.com/atlas)
