@@ -1,7 +1,7 @@
 Technical Report
 ================
 
-This technical report contains descriptions for language and framework features which will guide the engineering team to decide on the most effient development path to take and why using frameworks can benefit over writing an application from scratch. It will also indicate future technology that could be used to aid development of the FreeCycle software for production use.
+This technical report contains descriptions (and justifications) for the chosen languages and framework features used in the prototype. This will guide the development of the future production software. It will also explain why using frameworks can benefit over writing an application from scratch. It will also indicate future technology that could be used to aid development of the FreeCycle software.
 
 Server Framework Features
 -------------------------
@@ -284,7 +284,7 @@ Future Technology Suggestions
 -----------------------------
 
 ### Serverless (AWS Lambda)
-Using Serverless computing such as AWS Lambda allows for rapid deployment of applications/services as direct management of server infrastructure is not needed; as the cloud provider handles this for you. Serverless does not have a idle running cost instead opting for paying per execution model, this can reduce costs when there are no active users. Using Serverless can also remove the need to think about scaling to keep up with users as it handles this automatically, with the advantage of directly running requests closest to users on demand (reducing latency); thus a service can be provided globally.
+Using Serverless computing such as AWS Lambda allows for rapid deployment of applications/services as direct management of server infrastructure is not needed; as the cloud provider handles this for you. Serverless does not have a idle running cost instead opting for paying per execution model, this can reduce costs when there are no active users. Using Serverless computing allows for services to be "spun-up" on demand, allowing for load balancing and for ensuring that the service can be provided closest to users (reducing latency); thus a service can be provided globally.
 
 - [IBM Serverless](https://www.ibm.com/cloud/learn/serverless)
 
